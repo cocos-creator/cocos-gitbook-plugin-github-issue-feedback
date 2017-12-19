@@ -50,7 +50,11 @@ window.require(["gitbook"], function(gitbook) {
         }
         var config = pluginConfig["github-issue-feedback-language-custom"];
         var reportElement = document.createElement("button");
-        reportElement.textContent = "Have Feedback?";
+        if (gitbook.state.config.language.substring(0,2) == "zh"){
+            reportElement.textContent = "提交反馈";
+        } else {
+            reportElement.textContent = "Have Feedback?";
+        }
         reportElement.className = "gitbook-plugin-github-issue-feedback-language-custom";
         reportElement.setAttribute("style", "position:fixed; right:20px;bottom:20px;height:30px");
         var clickEvent = ("ontouchstart" in window) ? "touchend" : "click";
