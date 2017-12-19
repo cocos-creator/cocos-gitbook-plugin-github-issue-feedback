@@ -45,16 +45,20 @@ function getIssueURL(config) {
 window.require(["gitbook"], function(gitbook) {
     // plugin config
     gitbook.events.bind("start", function(e, pluginConfig) {
+        // fix: the "Feedback" button is put on the "next" (>) button on smartphone
         if (document.body.offsetHeight * 9 >= document.body.offsetWidth * 12) {
             return;
         }
+
         var config = pluginConfig["github-issue-feedback-language-custom"];
         var reportElement = document.createElement("button");
+        // add Chinese button support
         if (gitbook.state.config.language.substring(0,2) == "zh"){
             reportElement.textContent = "提交反馈";
         } else {
             reportElement.textContent = "Have Feedback?";
         }
+        
         reportElement.className = "gitbook-plugin-github-issue-feedback-language-custom";
         reportElement.setAttribute("style", "position:fixed; right:20px;bottom:20px;height:30px");
         var clickEvent = ("ontouchstart" in window) ? "touchend" : "click";
