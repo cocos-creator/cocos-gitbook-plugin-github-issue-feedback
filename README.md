@@ -4,6 +4,14 @@ GitHub issue feedback for gitbook.
 
 [![gif](https://media.giphy.com/media/3o7btYpgJvLlhkJMfC/giphy.gif)](http://www.giphy.com/gifs/3o7btYpgJvLlhkJMfC)
 
+## gitbook-plugin-github-issue-feedback-language
+
+add language support by [natas](https://github.com/nantas/gitbook-plugin-github-issue-feedback)
+
+## gitbook-plugin-github-issue-feedback-language-custom
+
+when `body.offsetHeight * 9 >= body.offsetWidth * 12`, disable feedback button by [drelaptop](https://github.com/drelaptop/gitbook-plugin-github-issue-feedback), so as to didn't show button when user read on phone.
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
@@ -59,6 +67,8 @@ For bugs and feature requests, [please create an issue](https://github.com/azu/g
 
 - [github/azu](https://github.com/azu)
 - [twitter/azu_re](https://twitter.com/azu_re)
+- [github/nantas](https://github.com/nantas)
+- [github/drelaptop](https://github.com/drelaptop)
 
 ## License
 

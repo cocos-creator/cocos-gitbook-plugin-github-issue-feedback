@@ -33,7 +33,7 @@ function getAPIURL(config, filePath) {
     if (config["githubAPIBaseURL"]) {
         return urlJoin(config["githubAPIBaseURL"], filePath);
     }
-    return urlJoin(`https://api.github.com/repos/`, config.repo, `contents`, filePath);
+    return urlJoin(`https://api.github.com/repos/`, config.repo, `contents`, filePath) + `?ref=${config.branch}`;
 }
 
 function getIssueURL(config) {
@@ -45,17 +45,20 @@ function getIssueURL(config) {
 window.require(["gitbook"], function(gitbook) {
     // plugin config
     gitbook.events.bind("start", function(e, pluginConfig) {
-        var config = pluginConfig["github-issue-feedback"];
+        if (document.body.offsetHeight * 9 >= document.body.offsetWidth * 12) {
+            return;
+        }
+        var config = pluginConfig["github-issue-feedback-language-custom"];
         var reportElement = document.createElement("button");
-        reportElement.textContent = "Bug Report";
-        reportElement.className = "gitbook-plugin-github-issue-feedback";
-        reportElement.setAttribute("style", "position:fixed; right:0;bottom:0;");
+        reportElement.textContent = "Have Feedback?";
+        reportElement.className = "gitbook-plugin-github-issue-feedback-language-custom";
+        reportElement.setAttribute("style", "position:fixed; right:20px;bottom:20px;height:30px");
         var clickEvent = ("ontouchstart" in window) ? "touchend" : "click";
         reportElement.addEventListener(clickEvent, function(event) {
-            var pathname = path.join(gitbook.state.config.root || "./", gitbook.state.filepath);
+            var pathname = path.join(gitbook.state.config.root || "./", gitbook.state.config.language, gitbook.state.filepath);
             var apiURL = getAPIURL(config, pathname);
-            var resourceURL = getResourceURL(config, pathname, "master");
-            var editURL = getEditURL(config, pathname, "master");
+            var resourceURL = getResourceURL(config, pathname, config.branch);
+            var editURL = getEditURL(config, pathname, config.branch);
             var chapterTitle = gitbook.state.chapterTitle;
             var bug = new BugReporter(getIssueURL(config));
             var selectedText = bug.getSelectedText().trim();
