@@ -2,15 +2,14 @@
 
 GitHub issue feedback for gitbook.
 
-[![gif](https://media.giphy.com/media/3o7btYpgJvLlhkJMfC/giphy.gif)](http://www.giphy.com/gifs/3o7btYpgJvLlhkJMfC)
-
 ## gitbook-plugin-github-issue-feedback-language
 
-add language support by [natas](https://github.com/nantas/gitbook-plugin-github-issue-feedback)
+- add language support
 
 ## gitbook-plugin-github-issue-feedback-language-custom
 
-when `body.offsetHeight * 9 >= body.offsetWidth * 12`, disable feedback button by [drelaptop](https://github.com/drelaptop/gitbook-plugin-github-issue-feedback), so as to didn't show button when user read on phone.
+- add disable feedback button support on smartphone
+- change button content to "提交反馈", when reading Chinese books
 
 ## Install
 
