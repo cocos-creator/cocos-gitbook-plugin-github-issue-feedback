@@ -52,18 +52,25 @@ window.require(["gitbook"], function(gitbook) {
 
         var config = pluginConfig["github-issue-feedback-language-custom"];
         var reportElement = document.createElement("button");
-        // add Chinese button support
-        if (gitbook.state.config.language.substring(0,2) == "zh"){
+        reportElement.textContent = "Have Feedback?";
+
+        // custom Chinese button support
+        var isChinese = (gitbook.state.config.language.substring(0,2) == "zh");
+        if (isChinese) {
             reportElement.textContent = "提交反馈";
-        } else {
-            reportElement.textContent = "Have Feedback?";
         }
         
         reportElement.className = "gitbook-plugin-github-issue-feedback-language-custom";
         reportElement.setAttribute("style", "position:fixed; right:20px;bottom:20px;height:30px");
         var clickEvent = ("ontouchstart" in window) ? "touchend" : "click";
         reportElement.addEventListener(clickEvent, function(event) {
-            var pathname = path.join(gitbook.state.config.root || "./", gitbook.state.config.language, gitbook.state.filepath);
+            var languagePath = gitbook.state.config.language;
+            
+            // language config maybe "zh" or "zh-hans", but folder is always "zh"
+            if (isChinese) {
+                languagePath = "zh";
+            }
+            var pathname = path.join(gitbook.state.config.root || "./", languagePath, gitbook.state.filepath);
             var apiURL = getAPIURL(config, pathname);
             var resourceURL = getResourceURL(config, pathname, config.branch);
             var editURL = getEditURL(config, pathname, config.branch);

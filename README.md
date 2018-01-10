@@ -10,6 +10,7 @@ GitHub issue feedback for gitbook.
 
 - add disable feedback button support on smartphone
 - change button content to "提交反馈", when reading Chinese books
+- language config maybe "zh" or "zh-hans" for Chinese, make folder path always "zh"
 
 ## Install
 
