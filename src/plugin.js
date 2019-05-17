@@ -10,13 +10,17 @@ function quoteText(text) {
 }
 
 function getContentAsync(apiURL) {
-    // https://github.com/jser/jser.info/edit/gh-pages/data/2015/08/index.json
-    // => https://api.github.com/repos/jser/jser.info/contents/data/2015/08/index.json
-    return fetch(apiURL).then(function(response) {
-        return response.json();
-    }).then(function(response) {
-        return decodeURIComponent(escape(atob(response.content)));
-    });
+    try {
+        // https://github.com/jser/jser.info/edit/gh-pages/data/2015/08/index.json
+        // => https://api.github.com/repos/jser/jser.info/contents/data/2015/08/index.json
+        return fetch(apiURL).then(function(response) {
+            return response.json();
+        }).then(function(response) {
+            return decodeURIComponent(escape(atob(response.content)));
+        });
+    } catch (error) {
+        return "";
+    }
 }
 
 function getResourceURL(config, filePath, branch) {
