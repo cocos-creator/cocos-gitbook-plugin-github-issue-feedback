@@ -15,7 +15,7 @@ function getContentAsync(apiURL) {
     return fetch(apiURL).then(function(response) {
         return response.json();
     }).then(function(response) {
-        return decodeURIComponent(escape(atob(response.content)));
+        return response.content && decodeURIComponent(escape(atob(response.content)));
     });
 }
 
