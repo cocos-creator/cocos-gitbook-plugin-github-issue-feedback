@@ -61,7 +61,7 @@ window.require(["gitbook"], function(gitbook) {
         }
         
         reportElement.className = "gitbook-plugin-github-issue-feedback-language-custom";
-        reportElement.setAttribute("style", "position:fixed; right:20px;bottom:20px;height:30px");
+        reportElement.setAttribute("style", "position:fixed;right:80px;bottom:20px;height:30px;z-index:999");
         var clickEvent = ("ontouchstart" in window) ? "touchend" : "click";
         reportElement.addEventListener(clickEvent, function(event) {
             var languagePath = gitbook.state.config.language;
