@@ -21,10 +21,18 @@ BugReporter.prototype.setTitle = function(title) {
 BugReporter.prototype.setBody = function(body) {
     this.github_issue_body = body;
 };
-BugReporter.prototype.report = function() {
+
+/**
+ * @description report jump
+ * @param target _blank: Load the URL into a new window
+ *               _parent: URL loaded into parent frame
+ *               _self: URL replaces current page (default target)
+ *               _top: URL replaces any loadable frameset
+ * */
+BugReporter.prototype.report = function(target = '_self') {
     var url = this.github_issue_point
         + "?title=" + encodeURIComponent(this.github_issue_title)
         + "&body=" + encodeURIComponent(this.github_issue_body);
-    location.href = url;
+    window.open(url, target)
 };
 module.exports = BugReporter;
