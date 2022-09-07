@@ -93,7 +93,7 @@ window.require(["gitbook"], function(gitbook) {
                     });
                 }
                 bug.setBody(body);
-                bug.report();
+                bug.report('_blank');
             });
         });
         document.body.appendChild(reportElement);
